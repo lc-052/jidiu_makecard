@@ -68,18 +68,6 @@ Android Studio 打开仓库根目录。使用 JDK 17，安装 Android SDK 36。G
 
 Windows 使用 `gradlew.bat`。本地 SDK 路径写入 `local.properties`，不提交到仓库。标准输出目录为 `app/build/outputs/apk/`；本工作区额外提供 `tools/isolated-build.gradle.kts`，用于隔离已有构建产物。
 
-### 发布签名
-
-在根目录自行创建 **不提交** 的 `release-signing.properties`：
-
-```properties
-storeFile=/absolute/path/to/your-release.jks
-storePassword=YOUR_STORE_PASSWORD
-keyAlias=YOUR_KEY_ALIAS
-keyPassword=YOUR_KEY_PASSWORD
-```
-
-没有此文件时 Release 为未签名包；有此文件时 Gradle 使用配置的密钥签名。密钥和密码文件必须独立备份，丢失后不能以原签名发布覆盖更新。仓库与 Release 附件均不包含发布密钥。
 
 ## 架构
 
@@ -97,7 +85,7 @@ Kotlin、Jetpack Compose、Material 3、MVVM、Repository、UseCase；Room 本�
 
 0.4.0 的72项 JVM 测试通过；模拟 HTTPS 的跨任务去重、取消与恢复、制卡页 UI 和实际文件本地规划共3项 Android 测试通过。Debug 和 Release 均可构建，Debug 在 Android 16 模拟器安装启动成功。
 
-实际文档的本地规划样本为146张配额、54章节、21批请求；独立短章节请求合并前为54批。只证明请求数量减少，不能推导真实模型提速百分比。**0.4.0 百炼全文付费生成未验证**。此前版本有真机真实调用记录，但不代表新版整套生成已通过真实模型验收。
+实际文档的本地规划样本为146张配额、54章节、21批请求；独立短章节请求合并前为54批。只证明请求数量减少，不能推导真实模型提速百分比。此前版本有真机真实调用记录，但不代表新版整套生成已通过真实模型验收。
 
 - AI 可能返回错误、拒绝或不完整内容，来源与结构校验不能证明事实准确，仍需人工核对。
 - 扫描 PDF、图片 OCR、PPTX、媒体附件与 APKG 导入未实现；单文档/解压内容限制20 MB，PDF 最多1000页。
